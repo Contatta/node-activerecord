@@ -48,8 +48,7 @@ exports.Model = class Model
       cb = ->
 
     # Require the master adapter (first in list)
-    Adapter = require "#{__dirname}/adapters/#{model.adapters[0]}"
-    adapter = new Adapter(model.config.get(model.adapters[0]))
+    adapter = model.config.getAdapter(model.adapters[0])
 
     # Query the adapter
     results = adapter.read finder, 
